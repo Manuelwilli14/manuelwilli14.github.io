@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours — Jean Manuel Yao</title>
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .page-header {
+      padding: 4rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--green);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .title {
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">JMY<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="parcours.html">Parcours</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h1>Parcours</h1>
+    </div>
+
+    <div class="timeline">
+
+      <!-- EXPERIENCE -->
+      <div class="timeline-item">
+        <div class="date">03/2025 — 09/2025</div>
+        <div class="title">Software Engineer — Dassault Systèmes</div>
+        <div class="subtitle">Stage de fin d’études · Vélizy-Villacoublay</div>
+        <div class="desc">
+          Génération d’environnements 3D à partir d’images (Backplate Inpainting).  
+          Intégration d’un client OpenAI en C++ et utilisation de modèles de diffusion.  
+          Traitement d’images avancé et reconstruction d’images 360°.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="date">03/2026</div>
+        <div class="title">Projet Deep Learning — Kaggle</div>
+        <div class="subtitle">Projet personnel</div>
+        <div class="desc">
+          Classification d’images avec CNN (VGG-16) en transfer learning.  
+          Entraînement d’un modèle from scratch, data augmentation et visualisation de feature maps.  
+          Application sur images et séries temporelles.
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="timeline-item">
+        <div class="date">2023 — 2025</div>
+        <div class="title">ESIR Rennes</div>
+        <div class="subtitle">Cycle ingénieur — Imagerie numérique</div>
+        <div class="desc">
+          Spécialisation en vision par ordinateur, traitement d’images et intelligence artificielle.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="date">2021 — 2023</div>
+        <div class="title">INP-HB (ESI)</div>
+        <div class="subtitle">Télécommunications & Réseaux</div>
+        <div class="desc">
+          Formation en sciences et technologies de l’information et de la communication.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="date">2019 — 2021</div>
+        <div class="title">Classes préparatoires MPSI</div>
+        <div class="subtitle">INP-HB</div>
+        <div class="desc">
+          Formation intensive en mathématiques, physique et sciences industrielles.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="date">2018 — 2019</div>
+        <div class="title">Baccalauréat scientifique</div>
+        <div class="subtitle">Lycée Classique d’Abidjan</div>
+        <div class="desc">
+          Série C — spécialisation scientifique.
+        </div>
+      </div>
+
+      <!-- ASSOCIATIF -->
+      <div class="timeline-item">
+        <div class="date">2023 — 2024</div>
+        <div class="title">Engagement associatif</div>
+        <div class="subtitle">INP-HB</div>
+        <div class="desc">
+          Secrétaire général adjoint d’une association d’élèves ingénieurs en télécommunications.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
