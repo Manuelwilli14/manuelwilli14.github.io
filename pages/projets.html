@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Jean Manuel Yao</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-header {
+      padding: 4rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: clamp(48px, 6vw, 72px);
+      margin-top: 1rem;
+      color: var(--text);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .project-number {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .project-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--display);
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-where {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .project-visual {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .code-line {
+      display: flex;
+      gap: 12px;
+    }
+
+    .code-line-num {
+      color: var(--text-dim);
+      min-width: 16px;
+      text-align: right;
+    }
+
+    .code-keyword { color: var(--green); }
+    .code-string { color: var(--amber); }
+    .code-comment { color: var(--text-dim); font-style: italic; }
+
+    .timeline-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--amber);
+      border: 1px solid rgba(255,184,0,0.3);
+      padding: 3px 8px;
+      border-radius: 1px;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .project-card.featured { grid-template-columns: 1fr; }
+      .page-header { padding: 3rem 1.25rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">JMY<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../projets.html">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="parcours.html">Parcours</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div class="label">Réalisations</div>
+      <h1>Projets</h1>
+    </div>
+
+    <div class="section">
+      <div class="projects-grid">
+
+        <!-- FEATURED -->
+        <div class="project-card featured reveal">
+          <div>
+            <div class="project-number">01 / STAGE</div>
+            <div class="timeline-tag">▶ 03 — 09 · 2025</div>
+            <div class="project-type">Computer Vision · Génération 3D</div>
+            <h2 class="project-title">Backplate Inpainting — Dassault Systèmes</h2>
+            <p class="project-desc">
+              Génération automatique d'environnements 3D à partir d'images statiques. Intégration d'un client OpenAI en C++ pour piloter des modèles de diffusion (Stable Diffusion, Flux). Reconstruction et traitement d'images 360° pour immersion dans des scènes 3D réalistes.
+            </p>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">OpenAI API</span>
+              <span class="tag">Stable Diffusion</span>
+              <span class="tag">Flux</span>
+              <span class="tag">Images 360°</span>
+              <span class="tag">ComfyUI</span>
+            </div>
+            <div class="project-where">
+              <span>Dassault Systèmes · Vélizy-Villacoublay</span>
+              <span>Stage fin d'études</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="code-line"><span class="code-line-num">01</span><span><span class="code-keyword">import</span> openai_client <span class="code-keyword">as</span> ai</span></div>
+            <div class="code-line"><span class="code-line-num">02</span><span><span class="code-comment">// Load backplate image</span></span></div>
+            <div class="code-line"><span class="code-line-num">03</span><span>Image img = <span class="code-string">loadImage</span>(path);</span></div>
+            <div class="code-line"><span class="code-line-num">04</span><span>img.<span class="code-keyword">inpaint</span>(mask, model);</span></div>
+            <div class="code-line"><span class="code-line-num">05</span><span><span class="code-comment">// Generate 360 environment</span></span></div>
+            <div class="code-line"><span class="code-line-num">06</span><span>Scene3D scene = <span class="code-string">reconstruct</span>(img);</span></div>
+            <div class="code-line"><span class="code-line-num">07</span><span>scene.<span class="code-keyword">render</span>(<span class="code-string">"equirectangular"</span>);</span></div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="project-card reveal">
+          <div class="project-number">02 / PERSONNEL</div>
+          <div class="timeline-tag">▶ 03 · 2026</div>
+          <div class="project-type">Deep Learning · CNN</div>
+          <h2 class="project-title">Computer Vision & Classification</h2>
+          <p class="project-desc">
+            Classification d'images avec VGG-16 en transfer learning sur Kaggle. Entraînement d'un CNN from scratch, visualisation de feature maps, data augmentation et convolutions 1D sur séries temporelles.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">VGG-16</span>
+            <span class="tag">Transfer Learning</span>
+            <span class="tag">Kaggle</span>
+          </div>
+          <div class="project-where">
+            <span>Kaggle · Projet personnel</span>
+            <span>2026</span>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="project-card reveal">
+          <div class="project-number">03 / ACADÉMIQUE</div>
+          <div class="timeline-tag">▶ 03 — 04 · 2024</div>
+          <div class="project-type">Machine Learning · Python</div>
+          <h2 class="project-title">Algorithmes de Classification</h2>
+          <p class="project-desc">
+            Implémentation et comparaison d'algorithmes de ML : Régression logistique, SVM, Random Forests, Boosting. Catégorisation automatique d'éléments en classes spécifiques.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">SVM</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">Boosting</span>
+          </div>
+          <div class="project-where">
+            <span>ESIR · Rennes</span>
+            <span>Projet académique</span>
+          </div>
+        </div>
+
+        <!-- PROJECT 4 -->
+        <div class="project-card reveal">
+          <div class="project-number">04 / ACADÉMIQUE</div>
+          <div class="timeline-tag">▶ 11/2023 — 01/2024</div>
+          <div class="project-type">C++ · Interface graphique</div>
+          <h2 class="project-title">IHM Qt — Moteur graphique 2D</h2>
+          <p class="project-desc">
+            Développement d'une interface homme-machine avec Qt en C++. Architecture signaux/slots, pattern Model/View, moteur GraphicsView 2D et gestion avancée des événements.
+          </p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Qt</span>
+            <span class="tag">GraphicsView</span>
+            <span class="tag">Model/View</span>
+            <span class="tag">OpenGL</span>
+          </div>
+          <div class="project-where">
+            <span>ESIR · Rennes</span>
+            <span>Projet académique</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Jean Manuel Yao</span>
+    <a href="contact.html" style="color: var(--green); text-decoration: none; font-family: var(--mono); font-size: 11px;">Discutons d'un projet →</a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
