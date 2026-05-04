@@ -1,10 +1,287 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>Mon Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jean Manuel Yao — Ingénieur IA & Vision par Ordinateur</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .hero-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      margin-bottom: 2.5rem;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 0.95;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .green { color: var(--green); }
+
+    .hero-role {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      height: 24px;
+    }
+
+    .hero-role .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--green);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-bio {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+      border-left: 2px solid var(--green-dark);
+      padding-left: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-right {
+      padding: 5rem 2.5rem 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 2px;
+    }
+
+    .stat-num {
+      font-family: var(--display);
+      font-size: 42px;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .tech-stack {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      border-radius: 2px;
+    }
+
+    .tech-stack-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-location {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .location-icon {
+      width: 8px; height: 8px;
+      border: 1px solid var(--green);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .location-icon::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    /* Diagonal accent */
+    .hero::after {
+      content: '';
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,255,135,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.25rem; }
+      .hero-right { padding: 3rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenue sur mon portfolio</h1>
-  <p>Je suis Ingénieur Imagerie Numérique</p>
+  <div class="scanline"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">JMY<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="pages/projets.html">Projets</a></li>
+      <li><a href="pages/competences.html">Compétences</a></li>
+      <li><a href="pages/parcours.html">Parcours</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-status fade-up">
+          <span class="status-dot"></span>
+          Disponible · Ouvert aux opportunités
+        </div>
+
+        <h1 class="hero-name fade-up">
+          Jean<br>Manuel<br><span class="green">Yao</span>
+        </h1>
+
+        <div class="hero-role fade-up">
+          <span data-typewriter='["Ingénieur IA & Vision", "Deep Learning Engineer", "Computer Vision Dev", "Software Engineer"]'></span>
+          <span class="cursor"></span>
+        </div>
+
+        <p class="hero-bio fade-up">
+          Ingénieur en informatique spécialisé en imagerie numérique, passionné par l'intelligence artificielle, la vision par ordinateur et la génération d'images. Diplômé de l'ESIR Rennes.
+        </p>
+
+        <div class="hero-actions fade-up">
+          <a href="pages/projets.html" class="btn btn-solid">Voir mes projets</a>
+          <a href="pages/contact.html" class="btn">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="label fade-up">Vue d'ensemble</div>
+
+        <div class="stat-row fade-up">
+          <div class="stat-box">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Ans d'expérience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Projets réalisés</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Langues maîtrisées</div>
+          </div>
+        </div>
+
+        <div class="tech-stack fade-up">
+          <div class="tech-stack-label">Stack principal</div>
+          <div class="tech-list">
+            <span class="tag">Python</span>
+            <span class="tag">C++</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">YOLO</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">CUDA</span>
+            <span class="tag">Scikit-learn</span>
+          </div>
+        </div>
+
+        <div class="hero-location fade-up">
+          <span class="location-icon"></span>
+          Vélizy-Villacoublay, Île-de-France, France
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Jean Manuel Yao</span>
+    <span>jeanmanuelyao60@gmail.com</span>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
