@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,6 +88,20 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+    }
+
+    .btn-download {
+      border-color: rgba(0,255,135,0.35);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn-download:hover {
+      background: transparent;
+      border-color: var(--green);
+      color: var(--green);
     }
 
     .hero-right {
@@ -212,7 +226,7 @@
       <div class="hero-left">
         <div class="hero-status fade-up">
           <span class="status-dot"></span>
-          Available · Open to opportunities (PhD or full-time position)
+          Available · Open to opportunities
         </div>
 
         <h1 class="hero-name fade-up">
@@ -220,17 +234,25 @@
         </h1>
 
         <div class="hero-role fade-up">
-          <span data-typewriter='["Computer Vision Engineer", "Deep Learning Engineer", "Software Engineer"]'></span>
+          <span data-typewriter='["Computer Vision Engineer", "Deep Learning Engineer",  "Software Engineer"]'></span>
           <span class="cursor"></span>
         </div>
 
         <p class="hero-bio fade-up">
-          Computer engineer specializing in digital imaging, with a passion for artificial intelligence, computer vision, and software development. A graduate of Ecole Supérieure d'Ingénieurs de Rennes(ESIR) and Institut National Polytechnique Félix Houphouêt-Boigny (INP-HB).
+          Computer engineering graduate specializing in digital imaging, passionate about artificial intelligence, computer vision. Graduated from ESIR Rennes and INP-HB.
         </p>
 
         <div class="hero-actions fade-up">
           <a href="pages/projets.html" class="btn btn-solid">View my projects</a>
           <a href="pages/contact.html" class="btn">Contact me</a>
+          <a href="CV_Jean_Manuel_ML.pdf" download="CV_Jean_Manuel_Yao.pdf" class="btn btn-download">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
         </div>
       </div>
 
@@ -239,12 +261,12 @@
 
         <div class="stat-row fade-up">
           <div class="stat-box">
-            <div class="stat-num">0</div>
+            <div class="stat-num">2+</div>
             <div class="stat-label">Years of experience</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">4+</div>
-            <div class="stat-label">Completed Projects</div>
+            <div class="stat-label">Projects completed</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">10+</div>
