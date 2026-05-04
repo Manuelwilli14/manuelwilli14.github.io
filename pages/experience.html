@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expérience — Jean Manuel Yao</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-header {
+      padding: 4rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
+    .page-header h1 {
+      font-size: clamp(48px, 6vw, 72px);
+      margin-top: 1rem;
+      color: var(--text);
+    }
+
+    .exp-list {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ---- BIG CARD ---- */
+    .exp-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .exp-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--green);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .exp-card:hover { border-color: var(--border-bright); }
+    .exp-card:hover::after { opacity: 1; }
+
+    /* two-column layout for featured card */
+    .exp-card.featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ---- HEADER ---- */
+    .exp-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--green);
+      color: var(--green);
+      border-radius: 1px;
+    }
+
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--amber);
+      border: 1px solid rgba(255,184,0,0.3);
+      padding: 4px 10px;
+      border-radius: 1px;
+    }
+
+    .exp-role {
+      font-family: var(--display);
+      font-size: 32px;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .exp-company::before {
+      content: '▸';
+      color: var(--text-dim);
+    }
+
+    .exp-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- BULLET LIST ---- */
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .exp-bullets li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 11px;
+      top: 2px;
+    }
+
+    /* ---- TAGS ---- */
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ---- CODE BLOCK (right column) ---- */
+    .exp-visual {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .exp-visual-header {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .code-line {
+      display: flex;
+      gap: 12px;
+    }
+
+    .code-line-num { color: var(--text-dim); min-width: 18px; text-align: right; }
+    .code-keyword { color: var(--green); }
+    .code-string  { color: var(--amber); }
+    .code-comment { color: var(--text-dim); font-style: italic; }
+    .code-class   { color: #88c0d0; }
+
+    /* ---- STAT ROW (industrial card) ---- */
+    .exp-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-stat {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .exp-stat-num {
+      font-family: var(--display);
+      font-size: 28px;
+      color: var(--green);
+      display: block;
+    }
+
+    .exp-stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .exp-card.featured { grid-template-columns: 1fr; }
+      .exp-list { padding: 0 1.25rem; }
+      .page-header { padding: 3rem 1.25rem 2rem; }
+      .exp-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">JMY<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="experience.html">Expérience</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="parcours.html">Parcours</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <div class="label">Parcours professionnel</div>
+      <h1>Expérience</h1>
+    </div>
+
+    <div class="exp-list">
+
+      <!-- ====== STAGE DASSAULT ====== -->
+      <div class="exp-card featured reveal">
+        <div>
+          <div class="exp-meta">
+            <span class="exp-badge">Stage fin d'études</span>
+            <span class="exp-date">▶ 03 — 09 · 2025</span>
+          </div>
+
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-company">Dassault Systèmes · Vélizy-Villacoublay</div>
+
+          <p class="exp-desc">
+            Génération d'environnements 3D réalistes à partir d'images statiques (Backplate Inpainting). Travail au sein de l'équipe R&D sur l'intégration de modèles génératifs dans un pipeline C++ professionnel.
+          </p>
+
+          <ul class="exp-bullets">
+            <li>Génération d'environnements 3D à partir d'images (Backplate Inpainting)</li>
+            <li>Intégration d'un client OpenAI en C++ pour piloter des modèles de diffusion</li>
+            <li>Tests et évaluation de LLMs et modèles génératifs (Stable Diffusion, Flux…)</li>
+            <li>Traitement d'images avancé en C++ (filtres, masques, segmentation)</li>
+            <li>Génération et reconstruction d'images 360° pour scènes immersives</li>
+          </ul>
+
+          <div class="exp-tags">
+            <span class="tag">C++</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Stable Diffusion</span>
+            <span class="tag">Flux</span>
+            <span class="tag">ComfyUI</span>
+            <span class="tag">Images 360°</span>
+            <span class="tag">Image Processing</span>
+          </div>
+        </div>
+
+        <!-- Code block -->
+        <div class="exp-visual">
+          <div class="exp-visual-header">Pipeline — Backplate Inpainting</div>
+          <div class="code-line"><span class="code-line-num">01</span><span><span class="code-keyword">#include</span> <span class="code-string">"openai_client.h"</span></span></div>
+          <div class="code-line"><span class="code-line-num">02</span><span><span class="code-keyword">#include</span> <span class="code-string">"image_processor.h"</span></span></div>
+          <div class="code-line"><span class="code-line-num">03</span><span></span></div>
+          <div class="code-line"><span class="code-line-num">04</span><span><span class="code-comment">// Load & segment backplate</span></span></div>
+          <div class="code-line"><span class="code-line-num">05</span><span><span class="code-class">Image</span> img = <span class="code-string">loadImage</span>(path);</span></div>
+          <div class="code-line"><span class="code-line-num">06</span><span><span class="code-class">Mask</span> mask = img.<span class="code-keyword">segment</span>(model);</span></div>
+          <div class="code-line"><span class="code-line-num">07</span><span></span></div>
+          <div class="code-line"><span class="code-line-num">08</span><span><span class="code-comment">// AI inpainting via OpenAI</span></span></div>
+          <div class="code-line"><span class="code-line-num">09</span><span>img.<span class="code-keyword">inpaint</span>(mask, <span class="code-string">"flux-dev"</span>);</span></div>
+          <div class="code-line"><span class="code-line-num">10</span><span></span></div>
+          <div class="code-line"><span class="code-line-num">11</span><span><span class="code-comment">// Reconstruct 360° scene</span></span></div>
+          <div class="code-line"><span class="code-line-num">12</span><span><span class="code-class">Scene3D</span> scene = <span class="code-string">reconstruct</span>(img);</span></div>
+          <div class="code-line"><span class="code-line-num">13</span><span>scene.<span class="code-keyword">render</span>(<span class="code-string">"equirectangular"</span>);</span></div>
+        </div>
+      </div>
+
+      <!-- ====== PROJET INDUSTRIEL ====== -->
+      <div class="exp-card reveal">
+        <div class="exp-meta">
+          <span class="exp-badge">Projet industriel</span>
+          <span class="exp-date">▶ 10/2024 — 01/2025</span>
+        </div>
+
+        <div class="exp-role">Reconstruction 3D depuis G-code</div>
+        <div class="exp-company">IRISA & Université de Rennes</div>
+
+        <p class="exp-desc">
+          Développement d'un visualiseur de fichiers STL en C++ sous Visual Studio, avec superposition G-code/STL pour la vérification de modèles d'impression 3D. Rendu 3D temps réel via OpenGL.
+        </p>
+
+        <div class="exp-stats">
+          <div class="exp-stat">
+            <span class="exp-stat-num">3D</span>
+            <span class="exp-stat-label">Visualisation</span>
+          </div>
+          <div class="exp-stat">
+            <span class="exp-stat-num">C++</span>
+            <span class="exp-stat-label">Langage</span>
+          </div>
+          <div class="exp-stat">
+            <span class="exp-stat-num">GL</span>
+            <span class="exp-stat-label">Rendu temps réel</span>
+          </div>
+        </div>
+
+        <ul class="exp-bullets">
+          <li>Parsing et interprétation de fichiers G-code et STL</li>
+          <li>Visualiseur 3D interactif avec rotation, zoom et navigation caméra</li>
+          <li>Superposition G-code / STL pour contrôle qualité d'impression</li>
+          <li>Rendu temps réel avec OpenGL sous Visual Studio</li>
+        </ul>
+
+        <div class="exp-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OpenGL</span>
+          <span class="tag">Visual Studio</span>
+          <span class="tag">STL Parser</span>
+          <span class="tag">G-code</span>
+          <span class="tag">3D Rendering</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Jean Manuel Yao</span>
+    <a href="contact.html" style="color: var(--green); text-decoration: none; font-family: var(--mono); font-size: 11px;">Me contacter →</a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
