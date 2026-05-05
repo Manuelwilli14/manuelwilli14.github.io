@@ -156,6 +156,119 @@
       .project-card.featured { grid-template-columns: 1fr; }
       .page-header { padding: 3rem 1.25rem 2rem; }
     }
+
+    /* ---- CERTIFICATIONS ---- */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #0075FF, transparent);
+      opacity: 1;
+    }
+
+    .cert-card:hover { border-color: rgba(0,117,255,0.5); }
+
+    .cert-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-issuer-logo {
+      flex-shrink: 0;
+    }
+
+    .cert-issuer {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .cert-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .cert-grade {
+      margin-left: auto;
+      font-family: var(--display);
+      font-size: 28px;
+      color: #0075FF;
+      line-height: 1;
+    }
+
+    .cert-name {
+      font-family: var(--display);
+      font-size: 26px;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+
+    .cert-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .cert-id {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .cert-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #0075FF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.08em;
+      transition: opacity 0.2s;
+    }
+
+    .cert-link:hover { opacity: 0.75; }
   </style>
 </head>
 <body>
@@ -270,11 +383,58 @@
 
       </div>
     </div>
+
+    <!-- ====== CERTIFICATIONS ====== -->
+    <div class="section" style="border-top: 1px solid var(--border); margin-top: 2rem;">
+      <div class="label reveal" style="margin-bottom: 1.5rem;">Licenses & Certifications</div>
+      <div class="cert-grid reveal">
+
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-issuer-logo">
+              <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="48" fill="#0075FF"/>
+                <text x="50" y="67" text-anchor="middle" font-size="42" font-weight="bold" fill="white" font-family="sans-serif">CV</text>
+              </svg>
+            </div>
+            <div>
+              <div class="cert-issuer">OpenCV University</div>
+              <div class="cert-date">April 1, 2026</div>
+            </div>
+
+          </div>
+
+          <div class="cert-name">PyTorch Bootcamp</div>
+          <p class="cert-desc">Certificate of Excellence awarded for outstanding performance in deep learning with PyTorch — covering CNNs, transfer learning, model training and optimization.</p>
+
+          <div class="cert-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">CNN</span>
+            <span class="tag">OpenCV</span>
+          </div>
+
+          <div class="cert-footer">
+            <span class="cert-id">ID: bab64d97aa9d40b78cc7de23b69013d3</span>
+            <a href="../PyTorch_Bootcamp_Certificate.pdf" target="_blank" class="cert-link">
+              View certificate
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </main>
 
   <footer>
     <span>© 2026 Jean Manuel Yao</span>
-    <a href="contact.html" style="color: var(--green); text-decoration: none; font-family: var(--mono); font-size: 11px;">Discutons d'un projet →</a>
+    <a href="contact.html" style="color: var(--green); text-decoration: none; font-family: var(--mono); font-size: 11px;">Get in touch →</a>
   </footer>
 
   <script src="../js/main.js"></script>
