@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jean Manuel Yao — Computer Vision Engineer</title>
+  <title>Jean Manuel Yao — Ingénieur IA & Vision par Ordinateur</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .hero {
@@ -29,7 +29,6 @@
       font-family: var(--mono);
       font-size: 11px;
       color: var(--green);
-      margin-bottom: 2.5rem;
     }
 
     .status-dot {
@@ -199,6 +198,29 @@
       pointer-events: none;
     }
 
+    .hero-photo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--green);
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .hero-photo-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; }
       .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.25rem; }
@@ -224,9 +246,15 @@
   <main>
     <div class="hero">
       <div class="hero-left">
-        <div class="hero-status fade-up">
-          <span class="status-dot"></span>
-          Available · Open to opportunities (PhD or full-time position)
+        <div class="hero-photo-wrap fade-up">
+          <img src="assets/photo.jpg" alt="Jean Manuel Yao" class="hero-photo">
+          <div class="hero-photo-info">
+            <div class="hero-status">
+              <span class="status-dot"></span>
+              Available · Open to opportunities
+            </div>
+            <div style="font-family: var(--mono); font-size: 11px; color: var(--text-muted);">Vélizy-Villacoublay, France</div>
+          </div>
         </div>
 
         <h1 class="hero-name fade-up">
@@ -234,12 +262,12 @@
         </h1>
 
         <div class="hero-role fade-up">
-          <span data-typewriter='["Computer Vision Engineer", "Deep Learning Engineer",  "Software Engineer"]'></span>
+          <span data-typewriter='["AI & Vision Engineer", "Deep Learning Engineer", "Computer Vision Dev", "Software Engineer"]'></span>
           <span class="cursor"></span>
         </div>
 
         <p class="hero-bio fade-up">
-          Computer engineering graduate specializing in digital imaging, passionate about artificial intelligence, computer vision. Graduated from ESIR Rennes and INP-HB.
+          Computer engineering graduate specializing in digital imaging, passionate about artificial intelligence, computer vision and image generation. Graduated from ESIR Rennes.
         </p>
 
         <div class="hero-actions fade-up">
@@ -261,7 +289,7 @@
 
         <div class="stat-row fade-up">
           <div class="stat-box">
-            <div class="stat-num">0</div>
+            <div class="stat-num">2+</div>
             <div class="stat-label">Years of experience</div>
           </div>
           <div class="stat-box">
