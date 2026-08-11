@@ -53,14 +53,6 @@
 
     .project-card:hover::before { opacity: 1; }
 
-    .project-card.featured {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-
     .project-number {
       font-family: var(--mono);
       font-size: 11px;
@@ -90,45 +82,8 @@
       font-size: 13px;
       color: var(--text-muted);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1rem;
-    }
-
-    .project-where {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .project-visual {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .code-line { display: flex; gap: 12px; }
-    .code-line-num { color: var(--text-dim); min-width: 16px; text-align: right; }
-    .code-keyword { color: var(--green); }
-    .code-string { color: var(--amber); }
-    .code-comment { color: var(--text-dim); font-style: italic; }
 
     .timeline-tag {
       display: inline-flex;
@@ -147,37 +102,50 @@
     .skill-logos {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
       flex-wrap: wrap;
       padding-top: 0.75rem;
       border-top: 1px solid var(--border);
-      margin-top: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .skill-logo {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
       background: var(--bg3);
       border: 1px solid var(--border);
-      padding: 4px;
-      transition: border-color 0.2s;
+      border-radius: 3px;
+      padding: 4px 8px;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .skill-logo:hover { border-color: var(--border-bright); }
+    .skill-logo:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+    }
 
     .skill-logo img {
-      width: 18px;
-      height: 18px;
+      width: 13px;
+      height: 13px;
       object-fit: contain;
-      filter: grayscale(30%);
+    }
+
+    .project-where {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
     }
 
     @media (max-width: 768px) {
-      .project-card.featured { grid-template-columns: 1fr; }
       .page-header { padding: 3rem 1.25rem 2rem; }
     }
 
@@ -315,17 +283,10 @@
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Medical Imaging · Tomography</div>
           <h2 class="project-title">Tomographic Reconstruction — Filtered Back-Projection</h2>
-          <p class="project-desc">
-            From-scratch C++ implementation of the CT reconstruction pipeline: Shepp-Logan phantom generation, forward projection via Radon transform, and filtered back-projection using the Ram-Lak ramp filter — no external dependencies.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Radon Transform</span>
-            <span class="tag">Medical Imaging</span>
-          </div>
+          <p class="project-desc">From-scratch C++ implementation of the CT reconstruction pipeline: Shepp-Logan phantom generation, forward projection via Radon transform, and filtered back-projection using the Ram-Lak ramp filter — no external dependencies.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="C++"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
-            <div class="skill-logo" title="CMake"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cmake/cmake-original.svg" alt="CMake"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cmake/cmake-original.svg" alt="">CMake</span>
           </div>
           <div class="project-where">
             <span>Personal project</span>
@@ -339,20 +300,11 @@
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Deep Learning · CNN</div>
           <h2 class="project-title">Computer Vision & Classification</h2>
-          <p class="project-desc">
-            Image classification using VGG-16 with transfer learning on Kaggle. Training a CNN from scratch, visualizing feature maps, data augmentation, and 1D convolutions on time series.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">VGG-16</span>
-            <span class="tag">Transfer Learning</span>
-            <span class="tag">Kaggle</span>
-          </div>
+          <p class="project-desc">Image classification using VGG-16 with transfer learning on Kaggle. Training a CNN from scratch, visualizing feature maps, data augmentation, and 1D convolutions on time series.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-            <div class="skill-logo" title="PyTorch"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"></div>
-            <div class="skill-logo" title="Kaggle"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="Kaggle"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">PyTorch</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="">Kaggle</span>
           </div>
           <div class="project-where">
             <span>Kaggle · Personal project</span>
@@ -366,18 +318,11 @@
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Image processing</div>
           <h2 class="project-title">Image editor</h2>
-          <p class="project-desc">
-            Graphical user interface. Implementation of functions for loading, displaying and saving images. Development of image processing filters.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Qt</span>
-            <span class="tag">OpenCV</span>
-          </div>
+          <p class="project-desc">Graphical user interface. Implementation of functions for loading, displaying and saving images. Development of image processing filters.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="C++"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
-            <div class="skill-logo" title="Qt"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="Qt"></div>
-            <div class="skill-logo" title="OpenCV"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="">Qt</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
           </div>
           <div class="project-where">
             <span>Personal project</span>
@@ -391,18 +336,11 @@
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Medical imaging</div>
           <h2 class="project-title">Image reconstruction from multiple aligned channels</h2>
-          <p class="project-desc">
-            Recovery of the various channels. Alignment and merging of these various channels.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Numpy</span>
-          </div>
+          <p class="project-desc">Recovery of the various channels. Alignment and merging of these various channels.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-            <div class="skill-logo" title="OpenCV"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"></div>
-            <div class="skill-logo" title="NumPy"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="">NumPy</span>
           </div>
           <div class="project-where">
             <span>ESIR · Rennes</span>
@@ -416,18 +354,11 @@
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video game</div>
           <h2 class="project-title">Development of a car racing game using Unity</h2>
-          <p class="project-desc">
-            Development of the user interface in Unity. Implementation of features in C#.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Unity</span>
-            <span class="tag">C#</span>
-            <span class="tag">Visual Studio</span>
-          </div>
+          <p class="project-desc">Development of the user interface in Unity. Implementation of features in C#.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="Unity"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity"></div>
-            <div class="skill-logo" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"></div>
-            <div class="skill-logo" title="Visual Studio"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="">Unity</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="">C#</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="">Visual Studio</span>
           </div>
           <div class="project-where">
             <span>ESIR · Rennes</span>
@@ -441,17 +372,10 @@
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video Analysis and Compression</div>
           <h2 class="project-title">Implementation of a lossy compression pipeline inspired by JPEG</h2>
-          <p class="project-desc">
-            DCT analysis, quantization, entropy calculation, and fixed-length coding (FLC). Objective distortion metrics (PSNR, error maps).
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">JPEG</span>
-            <span class="tag">Information Theory</span>
-          </div>
+          <p class="project-desc">DCT analysis, quantization, entropy calculation, and fixed-length coding (FLC). Objective distortion metrics (PSNR, error maps).</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-            <div class="skill-logo" title="NumPy"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="">NumPy</span>
           </div>
           <div class="project-where">
             <span>ESIR · Rennes</span>
@@ -465,19 +389,10 @@
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Machine Learning · Python</div>
           <h2 class="project-title">Classification Algorithms</h2>
-          <p class="project-desc">
-            Implementation and comparison of ML algorithms: Logistic regression, SVM, Random Forests, Boosting. Automatic classification of items into specific categories.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">SVM</span>
-            <span class="tag">Random Forest</span>
-            <span class="tag">Boosting</span>
-          </div>
+          <p class="project-desc">Implementation and comparison of ML algorithms: Logistic regression, SVM, Random Forests, Boosting. Automatic classification of items into specific categories.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-            <div class="skill-logo" title="Scikit-learn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="">Scikit-learn</span>
           </div>
           <div class="project-where">
             <span>ESIR · Rennes</span>
@@ -491,18 +406,10 @@
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">C++ · Graphical user interface</div>
           <h2 class="project-title">Qt GUI — 2D graphics engine</h2>
-          <p class="project-desc">
-            Development of a human-machine interface using Qt in C++. Signal/slot architecture, Model/View pattern, 2D GraphicsView engine, and advanced event handling.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Qt</span>
-            <span class="tag">GraphicsView</span>
-            <span class="tag">Model/View</span>
-          </div>
+          <p class="project-desc">Development of a human-machine interface using Qt in C++. Signal/slot architecture, Model/View pattern, 2D GraphicsView engine, and advanced event handling.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="C++"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
-            <div class="skill-logo" title="Qt"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="Qt"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="">Qt</span>
           </div>
           <div class="project-where">
             <span>ESIR · Rennes</span>
@@ -516,18 +423,11 @@
           <div class="timeline-tag">▶ 2023</div>
           <div class="project-type">Mobile app</div>
           <h2 class="project-title">Implementation of a daily scheduling app</h2>
-          <p class="project-desc">
-            Help students better plan their days. Design. Development of the mobile app. Integration with a Firebase database.
-          </p>
-          <div class="project-tags">
-            <span class="tag">React Native</span>
-            <span class="tag">Javascript</span>
-            <span class="tag">Firebase</span>
-          </div>
+          <p class="project-desc">Help students better plan their days. Design. Development of the mobile app. Integration with a Firebase database.</p>
           <div class="skill-logos">
-            <div class="skill-logo" title="React Native"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native"></div>
-            <div class="skill-logo" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
-            <div class="skill-logo" title="Firebase"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"></div>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React Native</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="">Firebase</span>
           </div>
           <div class="project-where">
             <span>Personal project</span>
