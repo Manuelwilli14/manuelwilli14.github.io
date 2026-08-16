@@ -33,6 +33,7 @@
       transition: border-color 0.25s, transform 0.25s;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .project-card::before {
@@ -83,6 +84,10 @@
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .timeline-tag {
@@ -96,6 +101,17 @@
       padding: 3px 8px;
       border-radius: 1px;
       margin-bottom: 1rem;
+    }
+
+    .read-more {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* ---- SKILL LOGOS ---- */
@@ -124,11 +140,6 @@
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .skill-logo:hover {
-      border-color: var(--border-bright);
-      color: var(--text);
-    }
-
     .skill-logo img {
       width: 13px;
       height: 13px;
@@ -145,8 +156,129 @@
       justify-content: space-between;
     }
 
+    /* ---- MODAL ---- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,12,15,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--bg2);
+      border: 1px solid var(--border-bright);
+      border-radius: 2px;
+      padding: 2.5rem;
+      max-width: 620px;
+      width: 100%;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.25s;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 4px 10px;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .modal-close:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+    }
+
+    .modal-number {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-family: var(--display);
+      font-size: 32px;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .modal-where {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
     @media (max-width: 768px) {
       .page-header { padding: 3rem 1.25rem 2rem; }
+      .modal { padding: 1.5rem; }
     }
 
     /* ---- CERTIFICATIONS ---- */
@@ -256,6 +388,19 @@
 <body>
   <div class="scanline"></div>
 
+  <!-- ====== MODAL ====== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModalBtn()">ESC ✕</button>
+      <div class="modal-number" id="modal-number"></div>
+      <div class="modal-type" id="modal-type"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-skills" id="modal-skills"></div>
+      <div class="modal-where" id="modal-where"></div>
+    </div>
+  </div>
+
   <nav>
     <a href="../index.html" class="nav-logo">JMY<span>.dev</span></a>
     <ul class="nav-links">
@@ -278,12 +423,14 @@
       <div class="projects-grid">
 
         <!-- PROJECT FBP -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Medical Imaging · Tomography</div>
           <h2 class="project-title">Tomographic Reconstruction — Filtered Back-Projection</h2>
           <p class="project-desc">From-scratch C++ implementation of the CT reconstruction pipeline: Shepp-Logan phantom generation, forward projection via Radon transform, and filtered back-projection using the Ram-Lak ramp filter — no external dependencies.</p>
+          <p class="project-desc-full" hidden>From-scratch C++ implementation of the full CT (computed tomography) reconstruction pipeline. The project includes: generation of a Shepp-Logan phantom as a synthetic test image, forward projection via the Radon transform to simulate sinogram acquisition, and reconstruction using filtered back-projection with the Ram-Lak ramp filter. Built entirely without external image processing libraries, relying only on standard C++ and CMake.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cmake/cmake-original.svg" alt="">CMake</span>
@@ -297,12 +444,14 @@
         </div>
 
         <!-- PROJECT Kaggle -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Deep Learning · CNN</div>
           <h2 class="project-title">Computer Vision & Classification</h2>
           <p class="project-desc">Image classification using VGG-16 with transfer learning on Kaggle. Training a CNN from scratch, visualizing feature maps, data augmentation, and 1D convolutions on time series.</p>
+          <p class="project-desc-full" hidden>Image classification project using VGG-16 with transfer learning on Kaggle. The project covers: fine-tuning a pre-trained VGG-16 model on a custom dataset, training a CNN from scratch and optimizing its performance, extracting and visualizing feature maps from convolutional layers, applying data augmentation techniques (rotation, zoom, flip) to improve model robustness, and experimenting with 1D convolutions applied to time series data.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">PyTorch</span>
@@ -317,12 +466,14 @@
         </div>
 
         <!-- PROJECT QtOpenCV -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Image processing</div>
           <h2 class="project-title">Image editor</h2>
-          <p class="project-desc">Graphical user interface. Implementation of functions for loading, displaying and saving images. Development of image processing filters.</p>
+          <p class="project-desc">Graphical user interface built with Qt and C++. Implementation of functions for loading, displaying and saving images. Development of image processing filters.</p>
+          <p class="project-desc-full" hidden>Desktop image editor developed in C++ using the Qt framework and OpenCV. Features include: a clean graphical user interface with file browser and image preview, functions to load, display and save images in various formats, a set of image processing filters (blur, sharpening, edge detection, grayscale conversion, brightness/contrast adjustment), and real-time preview of filter effects before applying them.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="">Qt</span>
@@ -335,12 +486,14 @@
         </div>
 
         <!-- PROJECT Medical -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Medical imaging</div>
           <h2 class="project-title">Image reconstruction from multiple aligned channels</h2>
           <p class="project-desc">Recovery of the various channels. Alignment and merging of these various channels.</p>
+          <p class="project-desc-full" hidden>Academic project focused on multi-channel image reconstruction for medical imaging purposes. The pipeline involves: extracting and recovering individual color/spectral channels from a raw acquisition, aligning the channels using image registration techniques to correct misalignments caused by acquisition conditions, and merging the aligned channels into a single reconstructed image. The project was implemented in Python using OpenCV and NumPy.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
@@ -353,12 +506,14 @@
         </div>
 
         <!-- PROJECT Unity -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video game</div>
           <h2 class="project-title">Development of a car racing game using Unity</h2>
-          <p class="project-desc">Development of the user interface in Unity. Implementation of features in C#. Another feature is the ability to control the vehicle’s movements by hand.</p>
+          <p class="project-desc">Development of the user interface in Unity. Implementation of features in C#. Another feature is the ability to control the vehicle's movements by hand.</p>
+          <p class="project-desc-full" hidden>Academic game development project built with Unity and C#. The project includes: design and implementation of the full game UI (menus, HUD, score display), vehicle physics and movement mechanics implemented in C#, hand gesture-based control of the vehicle using a webcam input, track design and environment setup in the Unity editor, and integration of game events and collision detection logic.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="">Unity</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="">C#</span>
@@ -371,12 +526,14 @@
         </div>
 
         <!-- PROJECT Vid -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video Analysis and Compression</div>
           <h2 class="project-title">Implementation of a lossy compression pipeline inspired by JPEG</h2>
           <p class="project-desc">DCT analysis, quantization, entropy calculation, and fixed-length coding (FLC). Objective distortion metrics (PSNR, error maps).</p>
+          <p class="project-desc-full" hidden>Academic project implementing a lossy image compression pipeline inspired by the JPEG standard. The pipeline includes: block-based Discrete Cosine Transform (DCT) analysis to transform spatial data into frequency components, quantization of DCT coefficients to reduce data size, entropy calculation to measure information content, fixed-length coding (FLC) for bitstream encoding, and evaluation using objective distortion metrics such as PSNR and error maps to assess reconstruction quality.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="">NumPy</span>
@@ -389,12 +546,14 @@
         </div>
 
         <!-- PROJECT Class -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Machine Learning · Python</div>
           <h2 class="project-title">Classification Algorithms</h2>
           <p class="project-desc">Implementation and comparison of ML algorithms: Logistic regression, SVM, Random Forests, Boosting. Automatic classification of items into specific categories.</p>
+          <p class="project-desc-full" hidden>Academic machine learning project focused on implementing and comparing classification algorithms from scratch and using Scikit-learn. Algorithms covered: Logistic Regression, Support Vector Machines (SVM), Random Forests, and Boosting (AdaBoost/Gradient Boosting). Each algorithm was evaluated on accuracy, precision, recall and F1-score, and the results were compared to determine the best-performing model for the given classification task.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="">Scikit-learn</span>
@@ -409,12 +568,14 @@
         </div>
 
         <!-- PROJECT Qt -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">C++ · Graphical user interface</div>
           <h2 class="project-title">Qt GUI — 2D graphics engine</h2>
           <p class="project-desc">Development of a human-machine interface using Qt in C++. Signal/slot architecture, Model/View pattern, 2D GraphicsView engine, and advanced event handling.</p>
+          <p class="project-desc-full" hidden>Academic project developing a complete graphical user interface in C++ using the Qt framework. The project implements: the signal/slot mechanism for event-driven communication between UI components, the Model/View pattern to separate data logic from presentation, a 2D scene built with Qt's GraphicsView framework allowing interactive rendering and manipulation of graphical elements, and advanced event handling for mouse, keyboard and custom user interactions.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" alt="">Qt</span>
@@ -428,12 +589,14 @@
         </div>
 
         <!-- PROJECT Time+ -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="openModal(this)">
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2023</div>
           <div class="project-type">Mobile app</div>
           <h2 class="project-title">Implementation of a daily scheduling app</h2>
           <p class="project-desc">Help students better plan their days. Design. Development of the mobile app. Integration with a Firebase database.</p>
+          <p class="project-desc-full" hidden>Personal mobile application designed to help students organize and better plan their daily schedules. The project covers the full development cycle: UI/UX design of the app screens and user flow, mobile development using React Native for cross-platform compatibility (iOS & Android), integration with a Firebase Realtime Database for storing and syncing user schedules, user authentication, and real-time updates of tasks and events.</p>
+          <div class="read-more">Click to read more →</div>
           <div class="skill-logos">
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React Native</span>
             <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
@@ -567,5 +730,41 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    function openModal(card) {
+      const number  = card.querySelector('.project-number').textContent;
+      const type    = card.querySelector('.project-type').textContent;
+      const title   = card.querySelector('.project-title').textContent;
+      const desc    = card.querySelector('.project-desc-full').textContent.trim();
+      const skills  = card.querySelector('.skill-logos').innerHTML;
+      const where   = card.querySelector('.project-where').innerHTML;
+      const date    = card.querySelector('.timeline-tag').textContent;
+
+      document.getElementById('modal-number').textContent = number + ' · ' + date;
+      document.getElementById('modal-type').textContent   = type;
+      document.getElementById('modal-title').textContent  = title;
+      document.getElementById('modal-desc').textContent   = desc;
+      document.getElementById('modal-skills').innerHTML   = skills;
+      document.getElementById('modal-where').innerHTML    = where;
+
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalBtn() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModal(e) {
+      if (e.target === document.getElementById('modalOverlay')) {
+        closeModalBtn();
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModalBtn();
+    });
+  </script>
 </body>
 </html>
