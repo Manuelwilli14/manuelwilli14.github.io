@@ -155,6 +155,42 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ---- SKILL LOGOS ---- */
+    .skill-logos{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;    
+    }
+
+    .skill-logo{
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px 8px;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-logo:hover{
+      border-color: var(--border-bright);
+      color: var(--text);
+    }
+
+    .skill-logo img{
+      width: 13px;
+      height: 13px;
+      object-fit: contain;
+    }
+    
+
     /* ---- CODE BLOCK (right column) ---- */
     .exp-visual {
       background: var(--bg3);
@@ -275,17 +311,15 @@
             <li>Generation and reconstruction of 360° images for immersive scenes</li>
           </ul>
 
-          <div class="exp-tags">
-            <span class="tag">C++</span>
-            <span class="tag">OpenAI API</span>
-            <span class="tag">LLM</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Stable Diffusion</span>
-            <span class="tag">Flux</span>
-            <span class="tag">ComfyUI</span>
-            <span class="tag">Images 360°</span>
-            <span class="tag">Image Processing</span>
-            <span class="tag">Wireshark</span>
+          <div class="skill-logos">
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+            <span class="skill-logo">OpenAI API</span>
+            <span class="skill-logo">Stable Diffusion</span>
+            <span class="skill-logo">Flux</span>
+            <span class="skill-logo">ComfyUI</span>
+            <span class="skill-logo">Images 360°</span>
+            <span class="skill-logo">Image Processing</span>
           </div>
         </div>
 
@@ -327,13 +361,13 @@
           <li>Real-time rendering with OpenGL under Visual Studio</li>
         </ul>
 
-        <div class="exp-tags">
-          <span class="tag">C++</span>
-          <span class="tag">OpenGL</span>
-          <span class="tag">Visual Studio</span>
-          <span class="tag">STL Parser</span>
-          <span class="tag">G-code</span>
-          <span class="tag">3D Rendering</span>
+        <div class="skill-logos">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-original.svg" alt="">OpenGL</span>
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="">Visual Studio</span>
+          <span class="skill-logo">STL Parser</span>
+          <span class="skill-logo">G-code</span>
+          <span class="skill-logo">3D Rendering</span>
         </div>
       </div>
 
@@ -358,13 +392,12 @@
           <li>Integration of the website with the company's cash register / POS system</li>
         </ul>
 
-        <div class="exp-tags">
-          <span class="tag">WordPress</span>
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Web Design</span>
-          <span class="tag">E-commerce</span>
+        <div class="skill-logos">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="">WordPress</span>
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML/CSS</span>
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+          <span class="skill-logo">Web Design</span>
+          <span class="skill-logo">E-commerce</span>
         </div>
       </div>
 
