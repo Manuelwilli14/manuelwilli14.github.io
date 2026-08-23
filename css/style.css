@@ -210,6 +210,20 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: 0.04em; line-height: 1
   background: var(--green-dim);
 }
 
+/* ====== PAGE HEADER ====== */
+.page-header {
+  padding: 4rem 2.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  font-size: clamp(48px, 6vw, 72px);
+  margin-top: 1rem;
+  color: var(--text);
+}
+
 /* SCAN LINE ANIMATION */
 @keyframes scanline {
   0% { transform: translateY(-100%); }
