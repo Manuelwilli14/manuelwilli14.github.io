@@ -17,6 +17,7 @@
       <div class="modal-type" id="modal-type"></div>
       <h2 class="modal-title" id="modal-title"></h2>
       <img class="modal-img" id="modal-img" alt="">
+      <a class="modal-credit" id="modal-credit" target="_blank" rel="noopener"></a>
       <p class="modal-desc" id="modal-desc"></p>
       <div class="modal-skills" id="modal-skills"></div>
       <a class="modal-github" id="modal-github" target="_blank">
@@ -74,7 +75,8 @@
         <!-- PROJECT Kaggle -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
           <div class="project-thumb">
-            <img src="../assets/projects/placeholder.svg" alt="Computer Vision &amp; Classification" loading="lazy">
+            <img src="../assets/projects/typical-cnn.png" alt="Diagram of a typical CNN: convolutions and subsampling produce feature maps, followed by fully connected layers" loading="lazy"
+                 data-credit="Image: Aphex34 · CC BY-SA 4.0 · Wikimedia Commons" data-credit-url="https://commons.wikimedia.org/wiki/File:Typical_cnn.png">
           </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2026</div>
@@ -244,7 +246,7 @@
         <!-- PROJECT Time+ -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
           <div class="project-thumb">
-            <img src="../assets/projects/placeholder.svg" alt="Daily scheduling mobile app" loading="lazy">
+            <img src="../assets/projects/time-plus.png" alt="Time+ mobile app screens: sign-up form and user home with planning, notes and calendar" loading="lazy">
           </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2023</div>
@@ -393,6 +395,15 @@
         imgEl.style.display = 'block';
       } else {
         imgEl.style.display = 'none';
+      }
+
+      const creditEl = document.getElementById('modal-credit');
+      if (img && img.dataset.credit) {
+        creditEl.textContent = img.dataset.credit;
+        creditEl.href = img.dataset.creditUrl;
+        creditEl.style.display = 'block';
+      } else {
+        creditEl.style.display = 'none';
       }
 
       const githubEl = document.getElementById('modal-github');
