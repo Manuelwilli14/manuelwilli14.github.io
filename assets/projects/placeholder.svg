@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#00ff87" stroke-opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="360" fill="#111820"/>
+  <rect width="640" height="360" fill="url(#grid)"/>
+
+  <!-- Viewfinder corners -->
+  <g fill="none" stroke="#00ff87" stroke-opacity="0.6" stroke-width="2">
+    <path d="M40 72V40H72"/>
+    <path d="M568 40H600V72"/>
+    <path d="M600 288V320H568"/>
+    <path d="M72 320H40V288"/>
+  </g>
+
+  <!-- Crosshair -->
+  <g fill="none" stroke="#00ff87" stroke-opacity="0.4">
+    <circle cx="320" cy="164" r="18"/>
+    <path d="M320 134V152M320 176V194M290 164H308M332 164H350"/>
+  </g>
+
+  <text x="320" y="244" text-anchor="middle" font-family="monospace" font-size="20" letter-spacing="4" fill="#5a7a6a">IMAGE · 16:9</text>
+</svg>

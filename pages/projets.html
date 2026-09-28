@@ -16,6 +16,7 @@
       <div class="modal-number" id="modal-number"></div>
       <div class="modal-type" id="modal-type"></div>
       <h2 class="modal-title" id="modal-title"></h2>
+      <img class="modal-img" id="modal-img" alt="">
       <p class="modal-desc" id="modal-desc"></p>
       <div class="modal-skills" id="modal-skills"></div>
       <a class="modal-github" id="modal-github" target="_blank">
@@ -51,6 +52,9 @@
 
         <!-- PROJECT FBP -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Filtered-Back-Projection.git">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Tomographic Reconstruction — Filtered Back-Projection" loading="lazy">
+          </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Medical Imaging · Tomography</div>
@@ -69,6 +73,9 @@
 
         <!-- PROJECT Kaggle -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Computer Vision &amp; Classification" loading="lazy">
+          </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2026</div>
           <div class="project-type">Deep Learning · CNN</div>
@@ -88,6 +95,9 @@
 
         <!-- PROJECT QtOpenCV -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Image-processing.git">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Image editor" loading="lazy">
+          </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Image processing</div>
@@ -105,6 +115,9 @@
 
         <!-- PROJECT Medical -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Image reconstruction from multiple aligned channels" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2025</div>
           <div class="project-type">Medical imaging</div>
@@ -122,6 +135,9 @@
 
         <!-- PROJECT Unity -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Car-racing-game_Unity.git">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Car racing game developed with Unity" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video game</div>
@@ -139,6 +155,9 @@
 
         <!-- PROJECT Digital Imaging -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Binary Image Processing" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Image Processing </div>
@@ -161,6 +180,9 @@
 
         <!-- PROJECT Vid -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="JPEG-inspired lossy compression pipeline" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Video Analysis and Compression</div>
@@ -178,6 +200,9 @@
 
         <!-- PROJECT Class -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Classification Algorithms" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">Machine Learning · Python</div>
@@ -197,6 +222,9 @@
 
         <!-- PROJECT Qt -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Qt GUI — 2D graphics engine" loading="lazy">
+          </div>
           <div class="project-number">ACADEMIC</div>
           <div class="timeline-tag">▶ 2024</div>
           <div class="project-type">C++ · Graphical user interface</div>
@@ -215,6 +243,9 @@
 
         <!-- PROJECT Time+ -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="">
+          <div class="project-thumb">
+            <img src="../assets/projects/placeholder.svg" alt="Daily scheduling mobile app" loading="lazy">
+          </div>
           <div class="project-number">PERSONAL</div>
           <div class="timeline-tag">▶ 2023</div>
           <div class="project-type">Mobile app</div>
@@ -346,6 +377,7 @@
       const where  = card.querySelector('.project-where').innerHTML;
       const date   = card.querySelector('.timeline-tag').textContent;
       const github = card.dataset.github;
+      const img    = card.querySelector('.project-thumb img');
 
       document.getElementById('modal-number').textContent = number + ' · ' + date;
       document.getElementById('modal-type').textContent   = type;
@@ -353,6 +385,15 @@
       document.getElementById('modal-desc').textContent   = desc;
       document.getElementById('modal-skills').innerHTML   = skills;
       document.getElementById('modal-where').innerHTML    = where;
+
+      const imgEl = document.getElementById('modal-img');
+      if (img) {
+        imgEl.src = img.src;
+        imgEl.alt = img.alt;
+        imgEl.style.display = 'block';
+      } else {
+        imgEl.style.display = 'none';
+      }
 
       const githubEl = document.getElementById('modal-github');
       if (github) {
