@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
 
 :root {
   --bg: #080c0f;
@@ -14,9 +14,9 @@
   --text-dim: #2a4a3a;
   --border: rgba(0,255,135,0.12);
   --border-bright: rgba(0,255,135,0.35);
-  --mono: 'Share Tech Mono', monospace;
-  --display: 'Bebas Neue', sans-serif;
-  --body: 'DM Sans', sans-serif;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --display: 'Source Serif 4', Georgia, serif;
+  --body: 'Source Serif 4', Georgia, serif;
   --nav-h: 64px;
 }
 
@@ -63,7 +63,7 @@ nav {
 }
 
 .nav-logo {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 13px;
   color: var(--green);
   text-decoration: none;
@@ -79,7 +79,7 @@ nav {
 }
 
 .nav-links a {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 12px;
   color: var(--text-muted);
   text-decoration: none;
@@ -111,10 +111,12 @@ main {
 }
 
 /* TYPOGRAPHY */
-h1, h2, h3 { font-family: var(--display); letter-spacing: 0.04em; line-height: 1; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; }
+
+.stat-num, .exp-role, .exp-stat-num, .cat-title, .cert-name, .lang-name, .form-title { font-weight: 600; }
 
 .label {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--green);
   letter-spacing: 0.2em;
@@ -167,7 +169,7 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: 0.04em; line-height: 1
 
 /* TAG */
 .tag {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.1em;
   padding: 3px 8px;
@@ -182,7 +184,7 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: 0.04em; line-height: 1
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -264,7 +266,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--text-muted);
   position: relative;
@@ -335,7 +337,7 @@ footer {
 .project-card:hover .project-thumb img { transform: scale(1.03); }
 
 .project-number {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--text-dim);
   letter-spacing: 0.1em;
@@ -343,7 +345,7 @@ footer {
 }
 
 .project-type {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--green);
   letter-spacing: 0.15em;
@@ -376,7 +378,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--amber);
   border: 1px solid rgba(255,184,0,0.3);
@@ -386,7 +388,7 @@ footer {
 }
 
 .read-more {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--green);
   letter-spacing: 0.1em;
@@ -410,7 +412,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--text-muted);
   background: var(--bg3);
@@ -424,7 +426,7 @@ footer {
 .skill-logo img { width: 13px; height: 13px; object-fit: contain; }
 
 .project-where {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--text-dim);
   border-top: 1px solid var(--border);
@@ -480,7 +482,7 @@ footer {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--text-muted);
   background: var(--bg3);
@@ -495,7 +497,7 @@ footer {
 .modal-close:hover { border-color: var(--border-bright); color: var(--text); }
 
 .modal-number {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--text-dim);
   letter-spacing: 0.15em;
@@ -503,7 +505,7 @@ footer {
 }
 
 .modal-type {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   color: var(--green);
   letter-spacing: 0.15em;
@@ -550,7 +552,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--green);
   text-decoration: none;
@@ -565,7 +567,7 @@ footer {
 .modal-github:hover { background: var(--green-dark); }
 
 .modal-where {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   color: var(--text-dim);
   border-top: 1px solid var(--border);
@@ -605,11 +607,11 @@ footer {
 .cert-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
 .cert-issuer-logo { flex-shrink: 0; }
 .cert-issuer { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-.cert-date { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; }
+.cert-date { font-family: var(--sans); font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; }
 .cert-name { font-family: var(--display); font-size: 26px; color: var(--text); margin-bottom: 0.75rem; line-height: 1.1; }
 .cert-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
 .cert-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
 .cert-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 1rem; }
-.cert-id { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.05em; }
-.cert-link { font-family: var(--mono); font-size: 11px; color: #0075FF; text-decoration: none; display: flex; align-items: center; gap: 5px; letter-spacing: 0.08em; transition: opacity 0.2s; }
+.cert-id { font-family: var(--sans); font-size: 10px; color: var(--text-dim); letter-spacing: 0.05em; }
+.cert-link { font-family: var(--sans); font-size: 11px; color: #0075FF; text-decoration: none; display: flex; align-items: center; gap: 5px; letter-spacing: 0.08em; transition: opacity 0.2s; }
 .cert-link:hover { opacity: 0.75; }
