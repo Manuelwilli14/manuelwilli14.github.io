@@ -82,7 +82,7 @@
       border-radius: 2px;
       padding: 1rem 1.25rem;
       display: grid;
-      grid-template-columns: 160px 1fr auto;
+      grid-template-columns: 1fr auto;
       align-items: center;
       gap: 1.5rem;
       transition: border-color 0.2s, background 0.2s;
@@ -113,24 +113,6 @@
       font-size: 13px;
       color: var(--text);
       letter-spacing: 0.04em;
-    }
-
-    /* BAR */
-    .skill-bar-wrap {
-      flex: 1;
-      height: 3px;
-      background: var(--bg3);
-      border-radius: 2px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .skill-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green), var(--green-dim));
-      border-radius: 2px;
-      width: 0;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .skill-level {
@@ -262,8 +244,6 @@
     @media (max-width: 768px) {
       .skill-category { grid-template-columns: 1fr; }
       .cat-label-col { position: static; }
-      .skill-item { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
-      .skill-bar-wrap { grid-column: 1 / -1; }
       .skills-wrapper { padding: 0 1.25rem; }
       .page-header { padding: 3rem 1.25rem 2rem; }
     }
@@ -302,22 +282,18 @@
         <div class="skill-items">
           <div class="skill-item">
             <span class="skill-name">Deep Learning</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">CNN / Transfer Learning</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Generative Models (Diffusion)</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Classical ML (SVM, RF, Boosting)</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
         </div>
@@ -333,32 +309,26 @@
         <div class="skill-items">
           <div class="skill-item">
             <span class="skill-name">Image Processing</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
            <div class="skill-item">
             <span class="skill-name">Object Detection (YOLO)</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Segmentation</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Medical Imaging</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Image Reconstruction</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Video Compression</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
         </div>
@@ -374,37 +344,30 @@
         <div class="skill-items">
           <div class="skill-item">
             <span class="skill-name">Python</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="92"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">C++</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">C</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"></div></div>
             <span class="skill-level advanced">Advanced</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">C#</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="68"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">CUDA</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">Java</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
           <div class="skill-item">
             <span class="skill-name">HTML / CSS</span>
-            <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"></div></div>
             <span class="skill-level intermediate">Intermediate</span>
           </div>
         </div>
@@ -507,19 +470,5 @@
   </footer>
 
   <script src="../js/main.js"></script>
-  <script>
-    // Animate skill bars on scroll
-    const bars = document.querySelectorAll('.skill-bar');
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const target = e.target.dataset.width;
-          e.target.style.width = target + '%';
-          barObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    bars.forEach(b => barObserver.observe(b));
-  </script>
 </body>
 </html>
