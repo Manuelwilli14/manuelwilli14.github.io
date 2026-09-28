@@ -50,6 +50,29 @@
     <div class="section">
       <div class="projects-grid">
 
+        <!-- PROJECT VQA -->
+        <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Vqa_vlm.git">
+          <div class="project-thumb">
+            <img src="../assets/projects/vqa-vlm.png" alt="Gradio app: a photo of a yellow car, the question 'Quelle est la couleur de la voiture ?', four prompt modes, and the answer 'Jaune'" loading="lazy">
+          </div>
+          <div class="project-number">PERSONAL</div>
+          <div class="timeline-tag">▶ 2026</div>
+          <div class="project-type">Vision-Language Models · VQA</div>
+          <h2 class="project-title">Visual Question Answering with a Vision-Language Model</h2>
+          <p class="project-desc">Ask a question about an image in natural language: a Gradio app around Qwen2.5-VL that compares four prompting strategies on the same image and question.</p>
+          <p class="project-desc-full" hidden>Visual question answering tool built around Qwen2.5-VL-3B-Instruct, an open-source vision-language model, with a Gradio interface that runs on a single consumer GPU or for free on Colab/Kaggle. The focus is prompt engineering: the same image and question can be answered with four system prompts — a short answer; a detailed answer justified by what is visible in the image; precise counting, which lists every instance before giving the total, since VLMs count poorly zero-shot; and self-verification, where a draft answer is checked against the image before the final answer. The model is loaded once and cached, images are passed directly through the processor's chat template, and greedy decoding keeps answers reproducible.</p>
+          <div class="read-more">Click to read more →</div>
+          <div class="skill-logos">
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">PyTorch</span>
+            <span class="skill-logo">Transformers</span>
+            <span class="skill-logo">Qwen2.5-VL</span>
+            <span class="skill-logo">Gradio</span>
+            <span class="skill-logo">Prompt Engineering</span>
+          </div>
+          <div class="project-where"><span>Personal project</span><span>2026</span></div>
+        </div>
+
         <!-- PROJECT FBP -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Filtered-Back-Projection.git">
           <div class="project-thumb">
