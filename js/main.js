@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (href === path) a.classList.add('active');
   });
 
+  // Theme toggle (initial theme is set by the inline script in <head>)
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    const root = document.documentElement;
+    const syncLabel = () => {
+      themeToggle.setAttribute('aria-label', root.dataset.theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    };
+    syncLabel();
+    themeToggle.addEventListener('click', () => {
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      const apply = () => { root.dataset.theme = next; syncLabel(); };
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (document.startViewTransition && !reduceMotion) document.startViewTransition(apply);
+      else apply();
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  }
+
   // Typewriter effect
   const typewriterEl = document.querySelector('[data-typewriter]');
   if (typewriterEl) {
