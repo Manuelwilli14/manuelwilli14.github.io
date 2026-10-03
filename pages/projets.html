@@ -73,6 +73,29 @@
     <div class="section">
       <div class="projects-grid">
 
+        <!-- PROJECT 3D STREET RECONSTRUCTION -->
+        <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Computer_Vision-Projects/tree/main/3D-street-reconstruction">
+          <div class="project-thumb">
+            <img src="../assets/projects/3d-street-reconstruction.png" alt="A street photo, its semantic segmentation map (sky, trees, buildings, vehicles, road), and the map overlaid on the photo" loading="lazy">
+          </div>
+          <div class="project-number">PERSONAL</div>
+          <div class="timeline-tag">▶ 2026</div>
+          <div class="project-type">3D Vision · Semantic Segmentation</div>
+          <h2 class="project-title">3D Street Reconstruction with Semantic Segmentation</h2>
+          <p class="project-desc">Reconstruct a street scene in 3D and label every point: SegFormer segments each RGB-D frame into road, vehicles, buildings, vegetation and sky, and the masks are projected onto an Open3D point cloud.</p>
+          <p class="project-desc-full" hidden>End-to-end Python pipeline that combines deep learning and 3D geometry to turn a street scene into a semantically annotated 3D model. Each image is segmented with SegFormer-B0 fine-tuned on Cityscapes (Hugging Face Transformers); its 19 classes are grouped into six supercategories — road, vehicle, building, vegetation, sky and other — and the class edges can optionally be sharpened with Segment Anything (SAM), each SAM mask taking the majority SegFormer label. In parallel, every RGB-D frame is back-projected into a point cloud with Open3D, downsampled on a voxel grid and aligned with point-to-plane ICP, with an optional Poisson surface mesh. The 2D→3D fusion then gives each 3D point the label of the pixel it comes from, producing a point cloud colored by class, exported as .ply and viewed in Open3D. The lightweight SegFormer-B0 model runs on CPU in about one second per image.</p>
+          <div class="read-more">Click to read more →</div>
+          <div class="skill-logos">
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="">PyTorch</span>
+            <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+            <span class="skill-logo">Open3D</span>
+            <span class="skill-logo">SegFormer</span>
+            <span class="skill-logo">Segment Anything</span>
+          </div>
+          <div class="project-where"><span>Personal project</span><span>2026</span></div>
+        </div>
+
         <!-- PROJECT VQA -->
         <div class="project-card reveal" onclick="openModal(this)" data-github="https://github.com/Manuelwilli14/Vqa_vlm.git">
           <div class="project-thumb">
